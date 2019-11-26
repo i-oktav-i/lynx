@@ -1,13 +1,13 @@
 <template>
     <div id="app">
-        <nav-menu />
+        <nav-menu class="menu" />
         <router-view class="page" />
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import NavMenu from './components/NavigationMenu.vue';
+import NavMenu from './components/navigationMenu/NavigationMenu.vue';
 
 export default Vue.extend({
     components: {
@@ -26,15 +26,34 @@ export default Vue.extend({
     color: #000;
     list-style: none;
 }
+
 #app {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: stretch;
-    overflow: hidden;
     .sm-block({
         flex-direction: column;
     });
 }
-.page {
-    width: 100%;
+
+.menu {
+    height: 100%;
+    width: 70px;
+    .sm-block({
+        width: 100%;
+        height: 70px;
+    });
 }
+
+.page {
+    width: calc(100% - 70px);
+    height: 100%;
+    padding: 0 20px;
+    .sm-block({
+        width: 100%;
+        height: calc(100% - 70px);
+    });
+}
+
 </style>
